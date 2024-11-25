@@ -13,6 +13,7 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'windwp/nvim-autopairs'
 ]])
 
 vim.cmd([[call plug#end()]])
@@ -33,7 +34,6 @@ require'nvim-treesitter.configs'.setup {
 }
 
 -- GENERAL SETTING --
-
 vim.o.mouse = ""
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
@@ -114,6 +114,9 @@ vim.api.nvim_create_autocmd('FileType', {
                             vim.fn.stdpath('config') .. '/plugged/cmp-cmdline/lua',
                             vim.fn.stdpath('config') .. '/plugged/cmp-nvim-lsp/lua',
                             vim.fn.stdpath('config') .. '/plugged/nvim-path/lua',
+                            vim.fn.stdpath('config') .. '/plugged/cmp-path/lua/',
+                            vim.fn.stdpath('config') .. '/plugged/gitsigns.nvim/lua/',
+                            vim.fn.stdpath('config') .. '/plugged/nvim-autopairs/lua/',
                         },
                     },
                     diagnostics = {
@@ -137,7 +140,7 @@ vim.api.nvim_create_autocmd('FileType', {
         vim.lsp.start({
             name = 'ccls',
             cmd = {'ccls'},
-            root_dir = vim.fs.dirname(vim.fs.find({'.ccls', 'compile_commands.json', '.git'}, { upward = true })[1]),
+            root_dir = vim.fs.dirname(vim.fs.find({'.ccls', '.git'}, { upward = true })[1]),
             settings = {
                 ccls = {
                     compilationDatabaseDirectory = "build",
@@ -154,7 +157,7 @@ vim.api.nvim_create_autocmd('FileType', {
                             "-I/usr/local/include",
                             "-I/lib",
                         },
-                        resourceDir = "/usr/lib/llvm-18/lib/clang/18/include"
+                        resourceDir = "/opt/clang+llvm/lib/clang/18/include"
                     },
                 }
             }
@@ -184,7 +187,18 @@ vim.api.nvim_create_autocmd('FileType', {
     end,
 })
 
-local cmp = require'cmp'
+require('nvim-autopairs').setup({
+    check_ts = true,
+    disable_filetype = {},
+})
+
+local cmp = require('cmp')
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+
+cmp.event:on(
+    'confirm_done',
+    cmp_autopairs.on_confirm_done()
+)
 
 cmp.setup({
     -- Snippet = {}, -- If i ever choose to use one
