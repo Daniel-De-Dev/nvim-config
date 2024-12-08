@@ -20,7 +20,7 @@ vim.cmd([[call plug#end()]])
 
 -- Enable Treesitter
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = {"c", "vim", "lua", "markdown", "markdown_inline", "python", "bash", "cpp", "make"},
+    ensure_installed = {"c", "vim", "lua", "markdown", "markdown_inline", "python", "bash", "cpp", "make", "rust"},
     sync_install = false,
     ignore_install = {},
     auto_install = false,
@@ -183,6 +183,18 @@ vim.api.nvim_create_autocmd('FileType', {
                     },
                 },
             },
+        })
+    end,
+})
+
+-- Rust language server setuo
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'rust',
+    callback = function (_)
+        vim.lsp.start({
+            name = 'Rust Analyzer',
+            cmd = { 'rust-analyzer' },
+            root_dir = vim.fs.dirname(vim.fs.find({ 'cargo.toml', '.cargo', '.git', 'rust-project.json' }, {upward = true})[1]),
         })
     end,
 })
