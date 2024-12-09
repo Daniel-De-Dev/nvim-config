@@ -91,6 +91,9 @@ vim.api.nvim_set_hl(0, "@operator", { fg = "#F29668" })
 vim.api.nvim_set_hl(0, "@type.builtin", { fg = "#59C3FE" })
 vim.api.nvim_set_hl(0, "@property", { fg = "#FFFFFF" })
 
+-- Enable inline hints
+vim.lsp.inlay_hint.enable(true)
+
 -- Create an autocommand for Lua files to set up the Lua language server
 vim.api.nvim_create_autocmd('FileType', {
     pattern = 'lua',
@@ -191,10 +194,25 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.api.nvim_create_autocmd('FileType', {
     pattern = 'rust',
     callback = function (_)
+        -- Find the root directory of the project
+        local root_dir = vim.fs.dirname(vim.fs.find({ 'cargo.toml', '.cargo', '.git', 'rust-project.json' }, { upward = true })[1])
+
+        -- Check for a `.nvim.lua` file in the root directory
+        local project_config = root_dir .. '/.nvim.lua'
+        local settings = {}
+
+        -- Load project-specific settings if the file exists
+        if vim.fn.filereadable(project_config) == 1 then
+            settings = dofile(project_config)
+        end
+
+        -- Start the Rust Analyzer with project-specific settings
         vim.lsp.start({
             name = 'Rust Analyzer',
             cmd = { 'rust-analyzer' },
-            root_dir = vim.fs.dirname(vim.fs.find({ 'cargo.toml', '.cargo', '.git', 'rust-project.json' }, {upward = true})[1]),
+            root_dir = root_dir,
+            capabilities = vim.lsp.protocol.make_client_capabilities(),
+            settings = settings,
         })
     end,
 })
