@@ -273,3 +273,25 @@ vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { no
 
 -- Setup gitsigns
 require('gitsigns').setup()
+
+-- Modify the in line errors
+vim.diagnostic.config({
+  virtual_text = false,  -- Disable inline diagnostics
+  float = { source = "always" },  -- Enable floating diagnostic messages
+})
+
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>e",
+  ":lua vim.diagnostic.open_float()<CR>",
+  { noremap = true, silent = true }
+)
+
+-- Trigger LSP updates when leaving insert mode or after text changes
+vim.api.nvim_create_autocmd({ "TextChanged", "InsertLeave" }, {
+  callback = function()
+    vim.lsp.buf.document_highlight()  -- Update highlights (optional)
+    vim.lsp.buf.signature_help()  -- Update signature help (optional)
+    vim.diagnostic.setqflist({ open = false })  -- Update diagnostic list
+  end,
+})
