@@ -22,4 +22,10 @@
       wrap = 80;
     };
   };
+
+  # Lua
+  programs.stylua = {
+    enable = true;
+    includes = [ "*.lua" ];
+  };
 }
