@@ -1,32 +1,66 @@
-local opt = vim.opt -- for convenience
+local opt = vim.opt
 
--- ## General
-opt.encoding = 'utf-8'
-opt.fileencoding = 'utf-8'
+-- General
+opt.mouse = "" -- Disable mouse support
 
--- ## UI
-opt.number = true         -- Show line numbers
-opt.relativenumber = true -- Show relative numbers
-opt.termguicolors = true  -- Enable true color support
-opt.scrolloff = 8         -- Keep 8 lines of context around cursor
-opt.signcolumn = "yes"    -- Always show the signcolumn
+opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
 
--- ## Indentation
+-- UI & Appearance
+opt.number = true
+opt.relativenumber = true
+opt.signcolumn = "yes:1"
+opt.termguicolors = true
+opt.showmode = false
+opt.cursorline = true
+opt.cursorlineopt = "number"
+opt.laststatus = 3
+
+opt.colorcolumn = "80"
+opt.list = true
+opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+opt.conceallevel = 0
+opt.pumheight = 10
+opt.fillchars = { eob = " " }
+
+-- TEXT, INDENTATION & WRAPPING
 opt.tabstop = 2
 opt.shiftwidth = 2
 opt.softtabstop = 2
-opt.expandtab = true      -- Use spaces instead of tabs
-opt.autoindent = true
-opt.smartindent = true
+opt.expandtab = true
 
--- ## Search
-opt.incsearch = true     -- Incremental search
-opt.ignorecase = true    -- Ignore case in search
-opt.smartcase = true     -- ...unless it contains uppercase
-opt.hlsearch = false     -- Don't highlight search results permanently
+opt.wrap = false -- no wrapping by default
+opt.breakindent = true -- better indent when wrapping is on
+opt.linebreak = true -- wrap on word boundaries
+opt.showbreak = "↪ "
 
--- ## Other
+-- SEARCH
+opt.incsearch = true
+opt.ignorecase = true
+opt.smartcase = true
+opt.hlsearch = false
+opt.inccommand = "nosplit"
+
+-- SCROLLING
+opt.scrolloff = 8
+opt.sidescrolloff = 8
+
+-- WINDOWS & SPLITS
+opt.splitbelow = true
+opt.splitright = true
+opt.splitkeep = "screen"
+
+-- FILES & BACKUPS
 opt.swapfile = false
 opt.backup = false
-opt.undodir = os.getenv("HOME") .. "/.cache/nvim/undodir"
+opt.writebackup = false
 opt.undofile = true
+
+-- PERFORMANCE & BEHAVIOR
+opt.updatetime = 250
+opt.timeoutlen = 300
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
+
+opt.hidden = true
+opt.confirm = true
+opt.shortmess:append({ W = true, I = true, c = true })
+opt.iskeyword:append("-") -- treat dash-separated words as a word
