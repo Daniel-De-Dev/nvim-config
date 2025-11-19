@@ -58,9 +58,20 @@ opt.undofile = true
 -- PERFORMANCE & BEHAVIOR
 opt.updatetime = 250
 opt.timeoutlen = 300
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
+opt.completeopt = { "menu", "menuone", "noselect" }
 
 opt.hidden = true
 opt.confirm = true
 opt.shortmess:append({ W = true, I = true, c = true })
 opt.iskeyword:append("-") -- treat dash-separated words as a word
+
+-- GLOBAL DIFF BEHAVIOUR
+opt.diffopt = {
+	"algorithm:histogram",
+	"closeoff",
+	"filler",
+	"indent-heuristic",
+	"internal",
+	"hiddenoff",
+	"linematch:80",
+}
