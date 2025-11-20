@@ -1,11 +1,8 @@
 local M = {}
 
 -- Global default capabilities for all LSPs
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-vim.lsp.config("*", {
-	capabilities = capabilities,
-})
+local capabilities = require("blink.cmp").get_lsp_capabilities()
+vim.lsp.config("*", { capabilities = capabilities })
 
 -- Universal behaviour when any lsp attaches
 vim.api.nvim_create_autocmd("LspAttach", {
