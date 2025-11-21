@@ -1,9 +1,9 @@
 return {
-	{
-		"folke/lazydev.nvim",
-		ft = "lua",
-		opts = {
-			library = {},
-		},
-	},
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      library = {},
+    },
+  },
 }

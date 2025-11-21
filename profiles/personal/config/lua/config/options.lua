@@ -67,11 +67,11 @@ opt.iskeyword:append("-") -- treat dash-separated words as a word
 
 -- GLOBAL DIFF BEHAVIOUR
 opt.diffopt = {
-	"algorithm:histogram",
-	"closeoff",
-	"filler",
-	"indent-heuristic",
-	"internal",
-	"hiddenoff",
-	"linematch:80",
+  "algorithm:histogram",
+  "closeoff",
+  "filler",
+  "indent-heuristic",
+  "internal",
+  "hiddenoff",
+  "linematch:80",
 }

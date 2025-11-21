@@ -1,70 +1,70 @@
 return {
-	{
-		"saghen/blink.cmp",
-		version = "1.*",
-		build = "nix run --accept-flake-config .#build-plugin",
+  {
+    "saghen/blink.cmp",
+    version = "1.*",
+    build = "nix run --accept-flake-config .#build-plugin",
 
-		---@module "blink.cmp"
-		---@type blink.cmp.Config
-		opts = {
-			completion = {
-				keyword = {
-					range = "full",
-				},
+    ---@module "blink.cmp"
+    ---@type blink.cmp.Config
+    opts = {
+      completion = {
+        keyword = {
+          range = "full",
+        },
 
-				documentation = {
-					auto_show = true,
-				},
+        documentation = {
+          auto_show = true,
+        },
 
-				ghost_text = {
-					enabled = true,
-					show_without_selection = true,
-				},
+        ghost_text = {
+          enabled = true,
+          show_without_selection = true,
+        },
 
-				list = {
-					selection = {
-						preselect = false,
-					},
-				},
-			},
+        list = {
+          selection = {
+            preselect = false,
+          },
+        },
+      },
 
-			keymap = {
-				preset = "enter",
-			},
+      keymap = {
+        preset = "enter",
+      },
 
-			signature = {
-				enabled = true,
-			},
+      signature = {
+        enabled = true,
+      },
 
-			cmdline = {
-				completion = {
-					menu = {
-						auto_show = true,
-					},
-				},
-			},
+      cmdline = {
+        completion = {
+          menu = {
+            auto_show = true,
+          },
+        },
+      },
 
-			fuzzy = {
-				sorts = {
-					"exact",
-					"score",
-					"sort_text",
-				},
-			},
+      fuzzy = {
+        sorts = {
+          "exact",
+          "score",
+          "sort_text",
+        },
+      },
 
-			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
-				per_filetype = {
-					lua = { inherit_defaults = true, "lazydev" },
-				},
-				providers = {
-					lazydev = {
-						name = "LazyDev",
-						module = "lazydev.integrations.blink",
-						score_offset = 100,
-					},
-				},
-			},
-		},
-	},
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+        per_filetype = {
+          lua = { inherit_defaults = true, "lazydev" },
+        },
+        providers = {
+          lazydev = {
+            name = "LazyDev",
+            module = "lazydev.integrations.blink",
+            score_offset = 100,
+          },
+        },
+      },
+    },
+  },
 }
