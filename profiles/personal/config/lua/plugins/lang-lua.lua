@@ -9,7 +9,7 @@ return {
               version = "LuaJIT",
             },
             diagnostics = {
-              disable = { "spell-check" },
+              disable = { "spell-check", "name-style-check" },
               globals = { "vim" },
               groupFileStatus = {
                 strong = "Opened",
@@ -34,7 +34,6 @@ return {
               },
               severity = {
                 ["lowercase-global"] = "Warning",
-                ["name-style-check"] = "Information",
               },
             },
             completion = {
@@ -43,11 +42,9 @@ return {
             workspace = {
               checkThirdParty = false,
             },
-            telemetry = {
-              enable = false,
-            },
             type = {
-              weakNilCheck = false,
+              castNumberToInteger = true,
+              inferParamType = true,
             },
             hint = {
               enable = true,
