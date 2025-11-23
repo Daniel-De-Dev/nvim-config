@@ -6,5 +6,6 @@
     fd
     gcc
     gnumake
+    tree-sitter
   ];
 }

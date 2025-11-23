@@ -75,3 +75,8 @@ opt.diffopt = {
   "hiddenoff",
   "linematch:80",
 }
+
+-- FOLDING
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+opt.foldenable = true
