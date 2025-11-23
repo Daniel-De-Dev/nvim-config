@@ -54,13 +54,15 @@ return {
           override_file_sorter = true,
           case_mode = "smart_case",
         },
-        ["ui-select"] = {
-          require("telescope.themes").get_ivy(),
-        },
       },
     },
     config = function(_, opts)
       local telescope = require("telescope")
+
+      opts.extensions["ui-select"] = {
+        require("telescope.themes").get_ivy(),
+      }
+
       telescope.setup(opts)
       pcall(telescope.load_extension, "fzf")
       pcall(telescope.load_extension, "ui-select")
