@@ -9,7 +9,7 @@ return {
               version = "LuaJIT",
             },
             diagnostics = {
-              disable = { "spell-check", "name-style-check" },
+              disable = { "spell-check", "name-style-check", "codestyle-check" },
               globals = { "vim" },
               groupFileStatus = {
                 strong = "Opened",
