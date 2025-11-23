@@ -25,20 +25,20 @@ return {
           local map = function(mode, lhs, rhs, desc)
             vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
           end
-          map("n", "gd", vim.lsp.buf.definition, "Goto definition")
-          map("n", "gr", vim.lsp.buf.references, "Goto references")
-          map("n", "gi", vim.lsp.buf.implementation, "Goto implementation")
-          map("n", "K", vim.lsp.buf.hover, "Hover documentation")
-          map("n", "<leader>rn", vim.lsp.buf.rename, "Rename symbol")
-          map("n", "<leader>ca", vim.lsp.buf.code_action, "Code action")
-          map("n", "<leader>ld", vim.diagnostic.open_float, "Line diagnostics")
+          map("n", "gd", vim.lsp.buf.definition, "LSP: Goto Definition")
+          map("n", "gr", vim.lsp.buf.references, "LSP: Find References")
+          map("n", "gi", vim.lsp.buf.implementation, "LSP: Goto Implementation")
+          map("n", "K", vim.lsp.buf.hover, "LSP: Hover Documentation")
+          map("n", "<leader>rn", vim.lsp.buf.rename, "LSP: Rename Symbol")
+          map("n", "<leader>ca", vim.lsp.buf.code_action, "LSP: Code Actions")
+          map("n", "<leader>ld", vim.diagnostic.open_float, "LSP: Show Line Diagnostics")
 
           if client:supports_method("textDocument/inlayHint", bufnr) then
             vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 
             map("n", "<leader>th", function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
-            end, "Toggle Inlay Hints")
+            end, "LSP: Toggle Inlay Hints")
           end
         end,
       })

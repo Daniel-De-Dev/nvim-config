@@ -67,10 +67,10 @@ return {
     end,
     cmd = "Telescope",
     keys = {
-      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find File" },
-      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find Buffer" },
-      { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Find Help" },
-      { "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Search Buffer" },
+      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Telescope: Find Files (Root)" },
+      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Telescope: Open Buffers" },
+      { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Telescope: Help Tags" },
+      { "<leader>/", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Telescope: Fuzzy Find in Buffer" },
       {
         "<leader>sn",
         function()
@@ -79,7 +79,7 @@ return {
             hidden = true,
           })
         end,
-        desc = "Search Neovim Config",
+        desc = "Telescope: Search Neovim Config (Dotfiles)",
       },
       {
         "<leader>fg",
@@ -90,11 +90,11 @@ return {
             end,
           })
         end,
-        desc = "Find Text (grep)",
+        desc = "Telescope: Live Grep (Project Search)",
       },
-      { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Search Keymaps" },
-      { "<leader>sd", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols" },
-      { "<leader>sw", "<cmd>Telescope lsp_workspace_symbols<cr>", desc = "Workspace Symbols" },
+      { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Telescope: Keymaps" },
+      { "<leader>sd", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Telescope: Document Symbols (LSP)" },
+      { "<leader>sw", "<cmd>Telescope lsp_workspace_symbols<cr>", desc = "Telescope: Workspace Symbols (LSP)" },
     },
   },
 }
