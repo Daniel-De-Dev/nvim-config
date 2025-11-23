@@ -22,38 +22,38 @@ return {
         end
 
         -- Hunk navigation
-        map("n", "<leader>hj", function()
+        map("n", "<leader>gj", function()
           gs.nav_hunk("next")
         end, "Git: Next Hunk (Jump)")
 
-        map("n", "<leader>hk", function()
+        map("n", "<leader>gk", function()
           gs.nav_hunk("prev")
         end, "Git: Previous Hunk (Jump)")
 
-        map("n", "<leader>hK", function()
+        map("n", "<leader>gK", function()
           vim.cmd.normal({ "gg0", bang = true })
           gs.nav_hunk("next")
         end, "Git: First Hunk (Top)")
 
-        map("n", "<leader>hJ", function()
+        map("n", "<leader>gJ", function()
           vim.cmd.normal({ "G$", bang = true })
           gs.nav_hunk("prev")
         end, "Git: Last Hunk (Bottom)")
 
         -- Hunk actions
-        map({ "n", "v" }, "<leader>hs", gs.stage_hunk, "Git: Stage Hunk")
-        map("n", "<leader>hS", gs.stage_buffer, "Git: Stage Buffer (All)")
+        map({ "n", "v" }, "<leader>gs", gs.stage_hunk, "Git: Stage Hunk")
+        map("n", "<leader>gS", gs.stage_buffer, "Git: Stage Buffer (All)")
 
-        map({ "n", "v" }, "<leader>hr", gs.reset_hunk, "Git: Reset Hunk (Undo)")
-        map("n", "<leader>hR", gs.reset_buffer, "Git: Reset Buffer (Undo All)")
+        map({ "n", "v" }, "<leader>gr", gs.reset_hunk, "Git: Reset Hunk (Undo)")
+        map("n", "<leader>gR", gs.reset_buffer, "Git: Reset Buffer (Undo All)")
 
-        map("n", "<leader>hp", gs.preview_hunk, "Git: Preview Hunk")
-        map("n", "<leader>hu", gs.undo_stage_hunk, "Git: Undo Stage Hunk")
+        map("n", "<leader>gp", gs.preview_hunk, "Git: Preview Hunk")
+        map("n", "<leader>gu", gs.undo_stage_hunk, "Git: Undo Stage Hunk")
 
         -- Blame & diff
-        map("n", "<leader>hb", gs.toggle_current_line_blame, "Git: Toggle Line Blame")
-        map("n", "<leader>hd", gs.diffthis, "Git: Diff against Index")
-        map("n", "<leader>hD", function()
+        map("n", "<leader>gb", gs.toggle_current_line_blame, "Git: Toggle Line Blame")
+        map("n", "<leader>gd", gs.diffthis, "Git: Diff against Index")
+        map("n", "<leader>gD", function()
           gs.diffthis("~")
         end, "Git: Diff against Last Commit (HEAD~1)")
       end,
