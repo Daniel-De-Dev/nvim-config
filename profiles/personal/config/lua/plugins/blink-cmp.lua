@@ -1,7 +1,6 @@
 return {
   {
-    "saghen/blink.cmp",
-    version = "1.*",
+    "Daniel-De-Dev/blink.cmp",
     build = "nix run --accept-flake-config .#build-plugin",
 
     ---@module "blink.cmp"
