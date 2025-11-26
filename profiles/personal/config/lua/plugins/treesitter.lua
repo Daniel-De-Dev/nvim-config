@@ -1,7 +1,7 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    lazy = false,
+    event = { 'BufReadPre', 'BufNewFile' },
     branch = 'main',
     build = ':TSUpdate',
     config = function()
