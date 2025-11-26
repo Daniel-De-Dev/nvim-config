@@ -1,13 +1,13 @@
 return {
   {
-    "nvim-treesitter/nvim-treesitter",
+    'nvim-treesitter/nvim-treesitter',
     lazy = false,
-    branch = "main",
-    build = ":TSUpdate",
+    branch = 'main',
+    build = ':TSUpdate',
     config = function()
       -- map: Parser -> FileType
       local map = {
-        lua = "lua",
+        lua = 'lua',
       }
 
       local parsers_to_install = {}
@@ -16,32 +16,27 @@ return {
 
       for parser, ft in pairs(map) do
         table.insert(parsers_to_install, parser)
-        if ft then
-          supported_filetypes[ft] = true
-        end
+        if ft then supported_filetypes[ft] = true end
       end
 
-      require("nvim-treesitter").install(parsers_to_install)
+      require('nvim-treesitter').install(parsers_to_install)
 
-      vim.api.nvim_create_autocmd({ "FileType", "BufWinEnter" }, {
+      vim.api.nvim_create_autocmd({ 'FileType', 'BufWinEnter' }, {
         group = group,
-        pattern = "*",
+        pattern = '*',
         callback = function(args)
           local ft = vim.bo[args.buf].filetype
-          if not supported_filetypes[ft] then
-            return
-          end
+          if not supported_filetypes[ft] then return end
 
-          if args.event == "FileType" then
+          if args.event == 'FileType' then
             local ok = pcall(vim.treesitter.start, args.buf)
-            if not ok then
-              return
-            end
+            if not ok then return end
           end
 
-          vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-          vim.wo.foldmethod = "expr"
-          vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+          vim.bo[args.buf].indentexpr =
+            'v:lua.require\'nvim-treesitter\'.indentexpr()'
+          vim.wo.foldmethod = 'expr'
+          vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
         end,
       })
     end,

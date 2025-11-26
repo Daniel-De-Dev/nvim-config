@@ -1,43 +1,43 @@
 return {
   {
-    "neovim/nvim-lspconfig",
+    'neovim/nvim-lspconfig',
     opts = {
       lua_ls = {
         settings = {
           Lua = {
             runtime = {
-              version = "LuaJIT",
+              version = 'LuaJIT',
             },
             diagnostics = {
-              disable = { "spell-check", "name-style-check", "codestyle-check" },
-              globals = { "vim" },
+              disable = { 'spell-check', 'name-style-check', 'codestyle-check' },
+              globals = { 'vim' },
               groupFileStatus = {
-                strong = "Opened",
-                await = "Opened",
-                codestyle = "Opened",
-                luadoc = "Opened",
+                strong = 'Opened',
+                await = 'Opened',
+                codestyle = 'Opened',
+                luadoc = 'Opened',
               },
               neededFileStatus = {
-                ["global-elements"] = "Opened",
+                ['global-elements'] = 'Opened',
               },
               groupSeverity = {
-                ["type-check"] = "Error",
-                ambiguity = "Error",
-                global = "Error",
-                unbalanced = "Error",
-                strong = "Error",
-                await = "Error",
-                unused = "Warning",
-                redefined = "Warning",
-                codestyle = "Hint",
-                luadoc = "Information",
+                ['type-check'] = 'Error',
+                ambiguity = 'Error',
+                global = 'Error',
+                unbalanced = 'Error',
+                strong = 'Error',
+                await = 'Error',
+                unused = 'Warning',
+                redefined = 'Warning',
+                codestyle = 'Hint',
+                luadoc = 'Information',
               },
               severity = {
-                ["lowercase-global"] = "Warning",
+                ['lowercase-global'] = 'Warning',
               },
             },
             completion = {
-              callSnippet = "Replace",
+              callSnippet = 'Replace',
             },
             workspace = {
               checkThirdParty = false,
@@ -54,7 +54,7 @@ return {
             format = {
               enable = false,
               defaultConfig = {
-                indent_size = "2",
+                indent_size = '2',
               },
             },
           },

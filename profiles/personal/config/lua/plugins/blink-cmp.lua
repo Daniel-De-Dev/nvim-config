@@ -1,14 +1,14 @@
 return {
   {
-    "Daniel-De-Dev/blink.cmp",
-    build = "nix run --accept-flake-config .#build-plugin",
+    'Daniel-De-Dev/blink.cmp',
+    build = 'nix run --accept-flake-config .#build-plugin',
 
     ---@module "blink.cmp"
     ---@type blink.cmp.Config
     opts = {
       completion = {
         keyword = {
-          range = "full",
+          range = 'full',
         },
 
         documentation = {
@@ -28,7 +28,7 @@ return {
       },
 
       keymap = {
-        preset = "enter",
+        preset = 'enter',
       },
 
       signature = {
@@ -45,21 +45,21 @@ return {
 
       fuzzy = {
         sorts = {
-          "exact",
-          "score",
-          "sort_text",
+          'exact',
+          'score',
+          'sort_text',
         },
       },
 
       sources = {
-        default = { "lsp", "path", "snippets", "buffer" },
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
         per_filetype = {
-          lua = { inherit_defaults = true, "lazydev" },
+          lua = { inherit_defaults = true, 'lazydev' },
         },
         providers = {
           lazydev = {
-            name = "LazyDev",
-            module = "lazydev.integrations.blink",
+            name = 'LazyDev',
+            module = 'lazydev.integrations.blink',
             score_offset = 100,
           },
         },
