@@ -8,6 +8,7 @@ return {
       -- map: Parser -> FileType
       local map = {
         lua = 'lua',
+        nix = 'nix',
       }
 
       local parsers_to_install = {}
