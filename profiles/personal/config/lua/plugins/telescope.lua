@@ -6,6 +6,7 @@ return {
       'nvim-tree/nvim-web-devicons',
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
       'nvim-telescope/telescope-ui-select.nvim',
+      'stevearc/oil.nvim',
     },
     opts = {
       defaults = {
@@ -124,6 +125,37 @@ return {
         '<leader>sw',
         '<cmd>Telescope lsp_workspace_symbols<cr>',
         desc = 'Telescope: Workspace Symbols (LSP)',
+      },
+      {
+        '<leader>fd',
+        function()
+          local actions = require('telescope.actions')
+          local action_state = require('telescope.actions.state')
+
+          require('telescope.builtin').find_files({
+            prompt_title = 'Find Directories',
+            find_command = {
+              'fd',
+              '--type',
+              'd',
+              '--hidden',
+              '--exclude',
+              '.git',
+            },
+            attach_mappings = function(prompt_bufnr, _)
+              actions.select_default:replace(function()
+                actions.close(prompt_bufnr)
+
+                ---@type table
+                local selection = action_state.get_selected_entry()
+
+                if selection then require('oil').open(selection[1]) end
+              end)
+              return true
+            end,
+          })
+        end,
+        desc = 'Telescope: Find Directories (Oil)',
       },
     },
   },
