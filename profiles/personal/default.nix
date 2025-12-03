@@ -8,5 +8,8 @@
     gcc
     gnumake
     tree-sitter
+    bash-language-server
+    shellcheck
+    marksman
   ];
 }

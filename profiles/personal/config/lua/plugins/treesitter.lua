@@ -9,6 +9,11 @@ return {
       local map = {
         lua = 'lua',
         nix = 'nix',
+        bash = 'sh',
+        markdown = 'markdown',
+        markdown_inline = 'markdown',
+        git_config = 'gitconfig',
+        diff = 'diff',
       }
 
       local parsers_to_install = {}
