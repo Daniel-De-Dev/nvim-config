@@ -9,7 +9,7 @@ return {
       local map = {
         lua = 'lua',
         nix = 'nix',
-        bash = 'sh',
+        bash = 'bash',
         markdown = 'markdown',
         markdown_inline = 'markdown',
         git_config = 'gitconfig',
