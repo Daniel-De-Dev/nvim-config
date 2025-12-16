@@ -14,6 +14,7 @@ return {
         markdown_inline = 'markdown',
         git_config = 'gitconfig',
         diff = 'diff',
+        rust = 'rust',
       }
 
       local parsers_to_install = {}

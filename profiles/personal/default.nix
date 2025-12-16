@@ -11,5 +11,6 @@
     bash-language-server
     shellcheck
     marksman
+    rust-analyzer
   ];
 }
