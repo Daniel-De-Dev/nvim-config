@@ -15,6 +15,12 @@ return {
         git_config = 'gitconfig',
         diff = 'diff',
         rust = 'rust',
+        javascript = 'javascript',
+        typescript = 'typescript',
+        tsx = 'typescriptreact',
+        css = 'css',
+        html = 'html',
+        astro = 'astro',
       }
 
       local parsers_to_install = {}
