@@ -21,6 +21,7 @@ return {
         css = 'css',
         html = 'html',
         astro = 'astro',
+        python = 'python',
       }
 
       local parsers_to_install = {}
