@@ -3,9 +3,15 @@ return {
     'neovim/nvim-lspconfig',
     opts = {
       pyright = {
-        analysis = {
-          typeCheckingMode = 'strict',
-          diagnosticMode = 'workspace',
+        settings = {
+          python = {
+            analysis = {
+              typeCheckingMode = 'strict',
+              diagnosticMode = 'workspace',
+              autoSearchPaths = true,
+              useLibraryCodeForTypes = true,
+            },
+          },
         },
       },
     },
