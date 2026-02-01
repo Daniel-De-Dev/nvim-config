@@ -15,6 +15,5 @@
     vscode-langservers-extracted
     typescript-language-server
     astro-language-server
-    basedpyright
   ];
 }
